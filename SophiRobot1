@@ -11,7 +11,7 @@ credentials = SignedJwtAssertionCredentials(json_key['client_email'], json_key['
 gc = gspread.authorize(credentials)
 print('got this far')
 try:
-   wks = gc.open("Sophi test worksheet").worksheet1
+   wks = gc.open("Sophi test worksheet").worksheet1 #can also do ("Sophi test worksheet").('name_of_worksheet')
    love = wks.cell(2, 2)
    print('yes!')
    print(love)
