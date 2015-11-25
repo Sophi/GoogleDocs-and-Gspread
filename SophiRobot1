@@ -1,0 +1,22 @@
+import os, sys
+import gspread 
+import requests
+import json
+from oauth2client.client import SignedJwtAssertionCredentials
+
+json_key = json.load(open('XXXX.json')) #file which holds client email and private key
+scope = ['https://spreadsheets.google.com/feeds']
+
+credentials = SignedJwtAssertionCredentials(json_key['client_email'], json_key['private_key'].encode(), scope)
+gc = gspread.authorize(credentials)
+print('got this far')
+try:
+   wks = gc.open("Sophi test worksheet").worksheet1
+   love = wks.cell(2, 2)
+   print('yes!')
+   print(love)
+   
+except:
+    print('fail')
+
+sys.exit()
