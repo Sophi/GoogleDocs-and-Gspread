@@ -11,12 +11,16 @@ credentials = SignedJwtAssertionCredentials(json_key['client_email'], json_key['
 gc = gspread.authorize(credentials)
 print('got this far')
 try:
-   wks = gc.open("Sophi test worksheet").worksheet1 #can also do ("Sophi test worksheet").('name_of_worksheet')
-   love = wks.cell(2, 2)
+   wks = gc.open("Sophi test worksheet").worksheet('XX') 
+   #add column with numbers from 1-100
+   for num in range(0, 100):
+     out_str = out_str+1
+     n = n+1
+     column = 'H'+ str(out_str)
+     column = str(column)
+     wks.update_acell (column, n)
+     print (column)
    print('yes!')
-   print(love)
-   
 except:
     print('fail')
-
 sys.exit()
